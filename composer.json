@@ -14,12 +14,12 @@
         "illuminate/support": "~4.1|5.0.x",
         "illuminate/translation": "~4.1|5.0.x",
         "symfony/finder": "~2.3",
-        "jlaso/tradukoj-connector": "dev-master"
+        "jlaso/tradukoj-connector": "1.0.0"
     },
     "autoload": {
         "psr-0": {
             "JLaso\\TradukojLaravel\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
