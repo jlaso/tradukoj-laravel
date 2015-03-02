@@ -1,0 +1,25 @@
+{
+    "name": "jlaso/tradukoj-laravel",
+    "description": "Tradukoj Laravel Translations",
+    "keywords": ["laravel", "translations", "tradukoj"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joseluis Laso (aka Patrick)",
+            "email": "jlaso@joseluislaso.es"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.7",
+        "illuminate/support": "~4.1|5.0.x",
+        "illuminate/translation": "~4.1|5.0.x",
+        "symfony/finder": "~2.3",
+        "jlaso/tradukoj-connector": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "JLaso\\TradukojLaravel\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
