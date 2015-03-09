@@ -18,7 +18,7 @@ Launch ```composer update``` in order to get **TradukojLaravel** installed.
 Launch the command ```php artisan vendor:publish``` to get the configuration of the package exposed and edit the
 file _app/config/tradukoj.php_ adding the data of your project in the user area of [**Tradukoj**](https://www.tradukoj.com).
 
-![Data project in the user area](https://github.com/jlaso/tradukoj-laravel/tree/master/doc/images/user-area-project-detail.png)
+![Data project in the user area](https://raw.githubusercontent.com/jlaso/tradukoj-laravel/master/doc/images/user-area-project-detail.png)
 
 ```php
 <?php
