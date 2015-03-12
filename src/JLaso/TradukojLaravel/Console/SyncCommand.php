@@ -53,7 +53,7 @@ class SyncCommand extends Command
 
         $this->info("Connecting with Tradukoj ...");
 
-        $clientSocketApi->init();
+        $clientSocketApi->init( 'localhost', 10999 );
 
         if($this->option('upload-first')){
 
@@ -82,11 +82,23 @@ class SyncCommand extends Command
 
         foreach($catalogs as $catalog){
 
+            $buffer = array();
+
             $output->writeln(PHP_EOL . sprintf('Downloading catalog "%s" ...', $catalog));
 
             $translations = $clientSocketApi->downloadKeys($catalog);
 
-            var_dump($translations);
+            foreach ($translations['data'] as $key=>$transInfo){
+                //$output->writeln(PHP_EOL . sprintf("\tprocessing key '%s'", $key));
+
+                foreach($transInfo as $locale=>$data){
+
+                    $buffer[$locale][$key] = $data['message'];
+
+                }
+            }
+
+            var_dump($buffer);
 
             //$data = $this->manager->getTranslations($catalog);
             //$this->output->writeln('uploadKeys("' . $catalog . '", $data)');

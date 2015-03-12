@@ -57,6 +57,7 @@ class Manager
             $date = date_create_from_format('U',filemtime($fileName));
             $translations = array_dot(\Lang::getLoader()->load($locale, $catalog));
             foreach($translations as $key => $value){
+                $fileName = str_replace($rootDir, "", $fileName);
                 $data[$key][$locale] = array(
                     'message'   => $value,
                     'updatedAt' => $date->format('c'),
@@ -68,4 +69,42 @@ class Manager
 
         return $data;
     }
+
+    /**
+     * @param $catalog
+     * @param $locale
+     * @param $remoteTranslations
+     */
+    public function integrateTranslations($catalog, $locale, $remoteTranslations)
+    {
+        $rootDir = dirname($this->app->make('path'));
+        $file = sprintf("%s/resources/lang/%s/%s.php", $rootDir, $locale, $catalog);
+
+        $localeTranslations = array_dot(\Lang::getLoader()->load($locale, $catalog));
+
+        $translations = array_merge(
+            $localeTranslations,
+            $remoteTranslations
+        );
+
+        $this->dump($file, $translations);
+    }
+
+    /**
+     * @param $file
+     * @param $data
+     */
+    public function dump($file, $data)
+    {
+        $content = "<?php\n\nreturn array(\n";
+
+        foreach($data as $key=>$value){
+            $content .= sprintf("\t\"%s\" \t=> \"%s\"", $key, $value);
+        }
+
+        $content .= "\n);\n";
+
+        file_put_contents($file, $content);
+    }
+
 }
