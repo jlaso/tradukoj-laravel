@@ -96,6 +96,8 @@ class SyncCommand extends Command
                     $buffer[$locale][$key] = $data['message'];
 
                 }
+
+                break;
             }
 
             var_dump($buffer);
