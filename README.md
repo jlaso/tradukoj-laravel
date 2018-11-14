@@ -67,7 +67,7 @@ php artisan tradukoj:sync --debug
 
 # Author and collaborators
 
-* Joseluis Laso (aka Patrick)  <jlaso@joseluislaso.es>
+* Joseluis Laso 
 
 
 References
